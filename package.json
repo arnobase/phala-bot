@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@phala/sdk": "^0.3.4-beta.0",
+    "@phala/typedefs": "^0.2.31",
+    "@polkadot/api": "^9.4.3",
+    "util": "^0.12.4"
+  },
+  "name": "phala_bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
