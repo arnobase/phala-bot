@@ -1,0 +1,6 @@
+const staker_seed="seed words for your staker account that you will store in server"
+const pool_owner_seed="pool owner seed words will also remain accessible directly in your config"
+const pool_pid = 0; // the pool ID... 1234
+const workerKey = "0x0000000000000000000000000000000000000000000000000000000000000000" // your worker public key
+
+module.exports = {staker_seed, pool_owner_seed, workerKey, pool_pid}

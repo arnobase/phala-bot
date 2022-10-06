@@ -3,7 +3,8 @@
     "@phala/sdk": "^0.3.4-beta.0",
     "@phala/typedefs": "^0.2.31",
     "@polkadot/api": "^9.4.3",
-    "util": "^0.12.4"
+    "util": "^0.12.4",
+    "yargs": "^17.6.0"
   },
   "name": "phala_bot",
   "version": "1.0.0",
