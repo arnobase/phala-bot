@@ -52,9 +52,9 @@ async function signAndSend(tx,account) {
             process.exit(exit_status);
         }
         setTimeout(() => {
-            console.log('No response in 60 sec... exiting');
+            console.log('No response in 180 sec... exiting');
             process.exit(1);
-        }, 60000);
+        }, 180000);
     });
     return unsub;
 }
@@ -78,8 +78,8 @@ async function checkStatus(api) {
             rewardAcc: BigInt(poolInfo.rewardAcc),
             stakable: pool_status.cap - utils.pha(poolInfo.totalStake)
         };
-        console.log("POOL Status :")
-        console.log(pool_status);
+        //console.log("POOL Status :")
+        //console.log(pool_status);
     }
     // secondly, get info about the staking account
     const STAKER = keyring.addFromUri(config.staker_seed);
@@ -104,19 +104,27 @@ async function checkStatus(api) {
         rewardDebt: BigInt(stakeInPoolInfo.rewardDebt),
         lockedInPool: utils.pha(stakeInPoolInfo.locked)
     }
-    console.log(staker_status.shares,pool_status.rewardAcc,staker_status.rewardDebt,staker_status.availableRewards)
-    const pendingRewards = (staker_status.shares*pool_status.rewardAcc) - staker_status.rewardDebt + staker_status.availableRewards
-    staker_status.pendingRewards = pendingRewards
-    console.log("STAKER Status :")
-    console.log(staker_status)
+    //console.log(staker_status.shares,pool_status.rewardAcc,staker_status.rewardDebt,staker_status.availableRewards)
+    //const pendingRewards = (staker_status.shares*pool_status.rewardAcc) - staker_status.rewardDebt + staker_status.availableRewards
+    //staker_status.pendingRewards = pendingRewards
+    console.log("Pool status :")
+    console.log("\tPool max cap: \t\t"+pool_status.cap)
+    console.log("\tPool total stake: \t"+pool_status.totalStake)
+    console.log("\tPool stake available: \t"+pool_status.stakable)
+    console.log("\tPool staked no worker: \t"+pool_status.free)
 
+    console.log("Stake account status :")
+    console.log("\tTotal balance: \t\t"+staker_status.total)
+    console.log("\tLocked in pool: \t"+staker_status.lockedInPool)
+    console.log("\tFree balance: \t\t"+staker_status.free)
+
+    /*
     const pool_stakable = pool_status.stakable;
     const staker_free = staker_status.free
-    
     if ( pendingRewards > 0 && staker_free <= pool_stakable) {
         const stake_amount = staker_free-1
-        console.log("\nSTAKABLE amount : "+stake_amount * 1e9)
-    }
+        console.log("\tStakable amount : "+stake_amount * 1e9)
+    }*/
 }
 
 /**
