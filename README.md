@@ -4,9 +4,12 @@
 
 Phabot is a nodejs script that automatically compound interests of a staking account by claiming and restaking rewards, and can restart a Phala mining worker with the highest amount available
 
->__The script require your seeds to be available to claim, stake and restart the worker. Be aware that your seeds have to be stored into the local configuration file for the script to work properly__
+# Disclaimer
+__The script require your seeds to be available to claim, stake and restart the worker. Be aware that your seeds have to be stored into the local configuration file for the script to work properly__
 
->__It is distributed without any garantee, use it at your own risk__
+>__storing the seed phrase on a machine connected to the Internet represents a significant security risk. Be sure to implement all the necessary means to secure your machine in order to protect yourself from viruses, hacking, or even theft of hardware.__
+
+__It is distributed without any warantee. Under no circumstance shall I have any liability to you for any loss or damage of any kind incurred as a result of the use of this script. Your use is solely at your own risk.__
 
 ## V1.0
 This version works with one pool worker, and one staker account, it's not designed to work with multiple staking account or pool worker, but could be easily adapted.
