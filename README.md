@@ -2,11 +2,11 @@
 
 ![Phabot logo](/phabot.png)
 
-Phabot is a nodejs script to help you automatically compound interest of a Phala mining pool 
+Phabot is a nodejs script that automatically compound interests of a staking account by claiming and restaking rewards, and can restart a Phala mining worker with the highest amount available
 
 >__The script require your seeds to be available to claim, stake and restart the worker. Be aware that your seeds have to be stored into the local configuration file for the script to work properly__
 
->__It is distributed without any guarantee, use it at your own risk__
+>__It is distributed without any garantee, use it at your own risk__
 
 ## V1.0
 This version works with one pool worker, and one staker account, it's not designed to work with multiple staking account or pool worker, but could be easily adapted.
@@ -14,6 +14,7 @@ This version works with one pool worker, and one staker account, it's not design
 ## Installation
 
 require git https://git-scm.com/downloads
+
 require nodejs and npm, refer to https://nodejs.org/
 
 ```bash
@@ -44,7 +45,7 @@ phabot
 # don't check if there is any, will fail if ther is not
 phabot --claim (-c)
 
-# stake available amount (all non locked or frozen PHA, or amount if specified)
+# stake available amount (all non locked or frozen PHA, or other amount if specified)
 phabot --stake [amount] (-s)
 
 # restart the worker to change stake to the maximum amount available
@@ -52,7 +53,19 @@ phabot --restart (-r)
 
 # run any of the commands without actually sending the transaction
 phabot --debug (-d)
+
+# chain claim, stake and restart in one command
+phabot-batch
 ```
+
+into `phabot-batch`, commands are chained with `&&`
+```bash
+# phabot-batch.sh
+
+# this will claim, then stake, then restart
+phabot -c && phabot -s && phabot -r
+```
+this ensure that if a tx failed, the next command will not execute, as the script return exit(1) on a TransactionFailed status (eg, if there is nothing to claim) or a timeout (180s)
 
 ## Automatisation
 To claim, restake, and restart in one single command line, you can use the snippet phabot-batch in a crontab
@@ -62,17 +75,6 @@ To claim, restake, and restart in one single command line, you can use the snipp
 # redirect the log to /path/to/logs/phabot.log
 0 10 * * * /bin/bash -c "phabot-batch 2>&1 | tee -a /path/to/logs/phabot.log > /dev/null"
 ```
-
-into phabot-batch, commands are chained with `&&`
-```bash
-# phabot-batch.sh
-
-# this will claim, then stake, then restart
-phabot -c && phabot -s && phabot -r
-```
-this ensure that if a tx failed, the next command will not execute, as the script return exit(1) on a TransactionFailed status (eg, if there is nothing to claim) or a timeout (180s)
-
-
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
