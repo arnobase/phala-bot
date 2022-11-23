@@ -3,6 +3,8 @@
     "@phala/sdk": "^0.3.4-beta.0",
     "@phala/typedefs": "^0.2.31",
     "@polkadot/api": "^9.4.3",
+    "nodemailer": "^6.8.0",
+    "nodemailer-mailjet-transport": "^1.0.4",
     "util": "^0.12.4",
     "yargs": "^17.6.0"
   },

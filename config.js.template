@@ -1,6 +1,34 @@
-const staker_seed="seed words for your staker account that you will store in server"
-const pool_owner_seed="pool owner seed words will also remain accessible directly in your config"
-const pool_pid = 0; // the pool ID... 1234
-const workerKey = "0x0000000000000000000000000000000000000000000000000000000000000000" // your worker public key
+class Config {
 
-module.exports = {staker_seed, pool_owner_seed, workerKey, pool_pid}
+ /***************************/
+/*** GLOBALS ***************/
+// Pool ID, to claim rewards from
+pool_pid = 9999; 
+// your worker public key
+workerKey = "0x0000000000000000000000000000000000000000000000000000000000000000";
+// Default PHA amount to keep available when staking
+keep_available = 5
+
+ /***************************/
+/*** SEEDS AND ADDRESSES ***/ 
+IT'S STRONGLY RECOMMENDED TO USE A PROXY 
+CURRENT VERSION USE THE SAME PROXY FOR BOTH 
+STAKING ACCOUNT AND MINING POOL **/
+
+// IF YOU'RE USING PROXY, UNCOMMENT AND USE THIS BLOCK 
+/**
+proxy_seed="seed words for your proxy account used for both accounts in script"
+staker_addr="4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+pool_owner_addr="4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+**/
+
+// IF YOU'RE NOT USING PROXY, UNCOMMENT AND USE THIS BLOCK
+/**
+staker_seed="seed words for your staker account that you will store in server"
+pool_owner_seed="pool owner seed words will also remain accessible directly in your config"
+// we don't need to set the addresses as they are deducted from the seeds
+**/
+  
+}
+
+module.exports = new Config();
