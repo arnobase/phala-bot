@@ -7,7 +7,7 @@ Phabot is a nodejs script that automatically compound interests of a staking acc
 # Disclaimer
 __The script require your seeds to be available to claim, stake and restart the worker. Be aware that your seeds have to be stored into the local configuration file for the script to work properly__
 
-__As V2 support Proxy accounts, it's trongly advised to use it, read more about proxy here : https://wiki.polkadot.network/docs/learn-proxies__
+__As V2 support Proxy accounts, it's strongly advised to use it, read more about proxy here : https://wiki.polkadot.network/docs/learn-proxies__
 
 >__storing the seed phrase on a machine connected to the Internet represents a significant security risk. Be sure to implement all the necessary means to secure your machine in order to protect yourself from viruses, hacking, or even theft of hardware.__
 
