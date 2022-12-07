@@ -13,6 +13,21 @@ __As V2 support Proxy accounts, it's strongly advised to use it, read more about
 
 __It is distributed without any warantee. Under no circumstance shall I have any liability to you for any loss or damage of any kind incurred as a result of the use of this script. Your use is solely at your own risk.__
 
+## Specific Phala World
+### to use pw bot, you need to 
+- configure your proxy seed (proxy_seed in config.js)
+- configure your sender addresses in config.js (addr_xxx, addr_xxy...) with the phala address of the shell owner
+- configure the proxy for the sender, with the proxy account used
+
+then just use the bot like this:
+
+```./pwfeed.js --fromaddr addr_xxx --toid 123 && \```
+
+- "addr_xxx" is a string corresponding to your config var in config.js
+
+- "123" is the nftId of the shell you want to feed
+
+
 ## V2.0
 ### new features :
 - support of Proxy ![proxy](img/proxy.png) accounts  , see [Proxy Accounts](https://wiki.polkadot.network/docs/learn-proxies) on Polkadot wiki
@@ -79,15 +94,20 @@ Staking account status -------------------------
 
 ```bash
 # claim pending rewards 
-# will fail if thee is not any
-phabot --claim (-c)
+# will fail if there is not any
+phabot --claim (-c) [--idpool (-i) pool_id] 
 
 # claim pool owner rewards 
 # will fail if there is not any
-phabot --claimpool (-p)
+phabot --claimpool (-p) [--idpool (-i) pool_id] 
+# ex: 
+phabot -c -i 3106 # will claim available rewards from pool 3106 for the staking account set in config 
 
 # stake available amount (all non locked or frozen PHA, or other amount if specified)
-phabot --stake [amount] (-s)
+phabot --stake [amount] (-s) [--idpool (-i) pool_id] 
+# ex:
+phabot -s 1000 -i 101 # will try to stake 1000PHA on the pool 101, will fail if there is not enough PHA available on the staking account
+phabot -s # will try to stake all PHA available minus 'keep_available' amount in config, on the default pool set in config
 
 # restart the worker to change stake to the maximum amount available
 phabot --restart (-r)

@@ -2,6 +2,11 @@ class Config {
 
  /***************************/
 /*** GLOBALS ***************/
+
+// specific Phala World
+addr_xxx = "44sxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+addr_xxy = "44syyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy";
+
 // Pool ID, to claim rewards from
 pool_pid = 9999; 
 // your worker public key
